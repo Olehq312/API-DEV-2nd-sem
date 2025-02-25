@@ -1,26 +1,39 @@
-import {Router, Request, Response} from 'express';
-import { 
-    createProduct, 
-    getAllProducts, 
+import { Router, Request, Response } from 'express';
+import {
+    createProduct,
+    getAllProducts,
     getProductById,
     updateProductById,
     deleteProductById,
-    getProductByQuery } from './controllers/productController';
+    getProductByQuery
+} from './controllers/productController';
+import { loginUser, registerUser, verifyToken } from './controllers/authController';
 
 const router: Router = Router();
 
-
-
+/**
+ * 
+ */
 router.get('/', (req: Request, res: Response) => {
-    res.status(200).send('Welcome to the API');
+    res.status(200).send('Welcome to the MENTS API');
 });
 
+// auth
+router.post('/user/register', registerUser);
+router.post('/user/login', loginUser);
 
-router.post('/products', createProduct);
+
+// create
+router.post('/products', verifyToken, createProduct);
+
+// gets
 router.get('/products', getAllProducts);
 router.get('/products/:id', getProductById);
-router.put('/products/:id', updateProductById);
-router.delete('/products/:id', deleteProductById);
 router.get('/products/query/:key/:val', getProductByQuery);
+
+// update + delete
+router.put('/products/:id', verifyToken, updateProductById);
+router.delete('/products/:id', verifyToken, deleteProductById);
+
 
 export default router;
