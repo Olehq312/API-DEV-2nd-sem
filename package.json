@@ -17,8 +17,7 @@
     "url": "https://github.com/Olehq312/restAPI/issues"
   },
   "homepage": "https://github.com/Olehq312/restAPI#readme",
-
-"nodemonConfig": {
+  "nodemonConfig": {
     "verbose": false,
     "watch": [
       "src"
@@ -28,13 +27,10 @@
     "ignore": [
       "node_modules"
     ]
-  
   },
-
-
-
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv-flow": "^4.1.0",
     "express": "^4.21.2",
@@ -44,6 +40,7 @@
     "nodemon": "^3.1.9"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/joi": "^17.2.2",
     "@types/node": "^22.10.10",
